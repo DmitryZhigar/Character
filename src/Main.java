@@ -27,6 +27,10 @@ public class Main {
         DimaS.bag.add(new Weapon(14,2));
         DimaS.bag.add("questItem");
 
+        DimaS.setHp(400);
+        DimaS.setLevel(55);
+        System.out.println(DimaS.toString());
+
         DimaS.showBag();
     }
 }
