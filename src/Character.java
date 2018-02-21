@@ -5,6 +5,8 @@ import Equipment.Armor;
 import Equipment.Weapon;
 
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Character  extends  AbstractCharacter{
 
@@ -17,10 +19,24 @@ public class Character  extends  AbstractCharacter{
         this.armor=armor;
         this.weapon=weapon;
     }
+  /*  private static String deleteSpases(String str)
+    {
+        while(str.contains(" ")) {
+            String replace = str.replace(" ", " ");
+            str=replace;
+        }
+        return str;
+
+    }*/
 
     @Override
     public void say() {
         super.say();
+    }
+
+    @Override
+    public void sayToCharacter(String question) {
+        super.sayToCharacter(question);
     }
 
     @Override
