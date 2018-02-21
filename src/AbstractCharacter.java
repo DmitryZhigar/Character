@@ -2,6 +2,8 @@ import Enums.EnumMaleFemale;
 import Enums.EnumRace;
 import Enums.EnumRole;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -55,7 +57,7 @@ abstract public class AbstractCharacter {
     public void sayToCharacter(String question) {
         switch (race) {
             case Elf:
-                ElfAnwser(question);
+                elfAnwser(question);
                 break;
 
             case Gnom:
@@ -63,15 +65,41 @@ abstract public class AbstractCharacter {
                 break;
 
             case Orc:
-
+                orcAnwser(question);
                 break;
 
             case Human:
-
+                humanAnwser(question);
                 break;
         }
     }
 
+    private static void orcAnwser(String questionForOrc) {
+        String answer = "", tmp = "";
+        Boolean counter = false;
+        ArrayList<String> firstSentense =new ArrayList<String>();;
+        ArrayList<String> words = new ArrayList<String>();
+
+        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(questionForOrc);
+        while (m.find()) {
+            tmp = m.group();
+            if (counter) {
+                words.addAll(Arrays.asList(tmp.split("\\p{P}?[ \\t\\n\\r]+")));
+            } else {
+                firstSentense.addAll(Arrays.asList(tmp.split("\\p{P}?[ \\t\\n\\r]+")));
+                counter = true;
+            }
+
+        }
+
+        for (int i=0; i < firstSentense.size();i++)
+            if(!words.contains(firstSentense.get(i)))
+            {
+                answer+=firstSentense.get(i) + " ";
+            }
+
+        System.out.println(answer);
+    }
 
     private static void gnomAnwser(String questionForGnom) {
         String answer = "", tmp = "", s = "\\b[a-zA-Zа-яА-Я]";
@@ -86,27 +114,50 @@ abstract public class AbstractCharacter {
         System.out.println(answer);
     }
 
-    private static void ElfAnwser(String questionForGnom) {
+    private static void elfAnwser(String questionForElf) {
         String answer = "", tmp = "", s = "\\b[a-zA-Zа-яА-Я]";
-        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(questionForGnom);
+        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(questionForElf);
         while (m.find()) {
             tmp = m.group();
             if (tmp.charAt(tmp.length() - 1) == '!') {
                 String[] words = tmp.split("\\p{P}?[ \\t\\n\\r]+");
-                 if(words.length>3)
-                 {
-                     answer += words[words.length-1] + " ";
-                     for (int i = 2; i <= words.length - 2; i++) {
-                         answer += words[i] + " ";
-                     }
-
-                     answer += words[1] + "!";
-                 }else answer += words[2] + " " + words[1];
+                if (words.length > 3) {
+                    answer += words[words.length - 1] + " ";
+                    for (int i = 2; i <= words.length - 2; i++) {
+                        answer += words[i] + " ";
+                    }
+                    answer += words[1] + "!";
+                } else answer += words[2] + " " + words[1];
 
             } else answer += tmp;
         }
         System.out.println(answer);
     }
+
+    private static void humanAnwser(String questionForHuman) {
+        String answer = "", tmp = "", s = "\\b[a-zA-Zа-яА-Я]";
+        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(questionForHuman);
+        while (m.find()) {
+            tmp = m.group();
+            if (tmp.charAt(tmp.length() - 1) == '.') {
+                System.out.println("предложение последняя буква " + tmp.charAt(tmp.length()-2) + " первая буква " + tmp.charAt(0));
+
+                String[] words = tmp.split("\\p{P}?[ \\t\\n\\r]+");
+                for(int i=0; i<words.length; i++)
+                {
+                    if(words[i].charAt(0) != tmp.charAt(0) ||
+                       words[i].charAt(words[i].length()-1) != tmp.charAt(tmp.length()-2))
+                    {
+                      answer += words[i] + " ";
+                    }
+                }
+
+
+            } else answer += tmp;
+        }
+        System.out.println(answer);
+    }
+
 
 
     @Override

@@ -32,5 +32,7 @@ public class Main {
         DimaS.showBag();*/
         DimaS.sayToCharacter("Efefefeff уаусу? Wqewrehtrbc   Цацаца? уаауау. Rаацсццусцсц ЦЦауау? Rмкцв уауа?");
         Sasha.sayToCharacter("Ты кто такой? Давай ка ты досвидания! Или приседания? ");
+        DimaZ.sayToCharacter("Привет как твои дела? что как 111. твои товарищи?");
+        Hum.sayToCharacter("ты кто такой ой.");
     }
 }
