@@ -7,6 +7,9 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static jdk.nashorn.internal.objects.NativeString.length;
+import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
+
 abstract public class AbstractCharacter {
 
     private String name;
@@ -55,6 +58,7 @@ abstract public class AbstractCharacter {
     }
 
     public void sayToCharacter(String question) {
+        //в этот метод вынести общие действия с методов
         switch (race) {
             case Elf:
                 elfAnwser(question);
@@ -77,10 +81,11 @@ abstract public class AbstractCharacter {
     private static void orcAnwser(String questionForOrc) {
         String answer = "", tmp = "";
         Boolean counter = false;
-        ArrayList<String> firstSentense =new ArrayList<String>();;
+        ArrayList<String> firstSentense = new ArrayList<String>();
+        ;
         ArrayList<String> words = new ArrayList<String>();
 
-        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(questionForOrc);
+        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(toLowerCase(questionForOrc));
         while (m.find()) {
             tmp = m.group();
             if (counter) {
@@ -92,10 +97,9 @@ abstract public class AbstractCharacter {
 
         }
 
-        for (int i=0; i < firstSentense.size();i++)
-            if(!words.contains(firstSentense.get(i)))
-            {
-                answer+=firstSentense.get(i) + " ";
+        for (int i = 0; i < firstSentense.size(); i++)
+            if (!words.contains(firstSentense.get(i))) {
+                answer += firstSentense.get(i) + " ";
             }
 
         System.out.println(answer);
@@ -115,12 +119,13 @@ abstract public class AbstractCharacter {
     }
 
     private static void elfAnwser(String questionForElf) {
-        String answer = "", tmp = "", s = "\\b[a-zA-Zа-яА-Я]";
+        String answer = "", tmp = "";
         Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(questionForElf);
         while (m.find()) {
             tmp = m.group();
             if (tmp.charAt(tmp.length() - 1) == '!') {
                 String[] words = tmp.split("\\p{P}?[ \\t\\n\\r]+");
+                words[words.length-1]=words[words.length-1].substring(0,words[words.length-1].length()-1);
                 if (words.length > 3) {
                     answer += words[words.length - 1] + " ";
                     for (int i = 2; i <= words.length - 2; i++) {
@@ -135,29 +140,26 @@ abstract public class AbstractCharacter {
     }
 
     private static void humanAnwser(String questionForHuman) {
-        String answer = "", tmp = "", s = "\\b[a-zA-Zа-яА-Я]";
-        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(questionForHuman);
+        String answer = "", tmp = "";
+        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(toLowerCase(questionForHuman));
         while (m.find()) {
             tmp = m.group();
             if (tmp.charAt(tmp.length() - 1) == '.') {
-                System.out.println("предложение последняя буква " + tmp.charAt(tmp.length()-2) + " первая буква " + tmp.charAt(0));
+
+             //   System.out.println("предложение последняя буква " + tmp.charAt(tmp.length() - 2) + " первая буква " + tmp.charAt(0));
 
                 String[] words = tmp.split("\\p{P}?[ \\t\\n\\r]+");
-                for(int i=0; i<words.length; i++)
-                {
-                    if(words[i].charAt(0) != tmp.charAt(0) ||
-                       words[i].charAt(words[i].length()-1) != tmp.charAt(tmp.length()-2))
-                    {
-                      answer += words[i] + " ";
+                for (int i = 0; i < words.length; i++) {
+                    if (words[i].charAt(0) != tmp.charAt(0) ||
+                            words[i].charAt(words[i].length() - 1) != tmp.charAt(tmp.length() - 2)) {
+                        answer += words[i] + " ";
                     }
                 }
-
 
             } else answer += tmp;
         }
         System.out.println(answer);
     }
-
 
 
     @Override
