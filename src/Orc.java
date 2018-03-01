@@ -1,7 +1,7 @@
 import Enums.EnumMaleFemale;
-import Enums.EnumRole;
 import Equipment.Armor;
 import Equipment.Weapon;
+import Role.Role;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,7 +16,7 @@ public class Orc extends Character implements SpeakWithCharacter{
     public Weapon weapon;
     ArrayList bag = new ArrayList();
 
-    Orc(String name, EnumMaleFemale sex, EnumRole role, Integer level, Integer hp, Armor armor, Weapon weapon) {
+    Orc(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp, Armor armor, Weapon weapon) {
         super(name, sex, role, level, hp);
         this.armor=armor;
         this.weapon=weapon;

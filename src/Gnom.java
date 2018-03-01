@@ -1,5 +1,5 @@
 import Enums.EnumMaleFemale;
-import Enums.EnumRole;
+import Role.Role;
 import Equipment.Armor;
 import Equipment.Weapon;
 
@@ -13,7 +13,7 @@ public class Gnom extends Character implements SpeakWithCharacter{
     public Weapon weapon;
     ArrayList bag = new ArrayList();
 
-    Gnom(String name, EnumMaleFemale sex, EnumRole role, Integer level, Integer hp, Armor armor, Weapon weapon) {
+    Gnom(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp, Armor armor, Weapon weapon) {
         super(name, sex, role, level, hp);
         this.armor=armor;
         this.weapon=weapon;

@@ -1,23 +1,16 @@
 import Enums.EnumMaleFemale;
-import Enums.EnumRole;
+import Role.Role;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
-
-abstract public class Character {
+abstract public class Character{
 
     private String name;
     private EnumMaleFemale sex;
-    private EnumRole role;
-
+    private Role role;
     private Integer level;
     private Integer hp;
 
-    Character(String name, EnumMaleFemale sex, EnumRole role, Integer level, Integer hp) {
+    Character(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp) {
         this.name = name;
         this.sex = sex;
         this.role = role;
