@@ -1,60 +1,41 @@
 import Enums.EnumMaleFemale;
-import Enums.EnumRace;
 import Enums.EnumRole;
-import Equipment.Armor;
-import Equipment.Weapon;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Character  extends  AbstractCharacter{
+import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
 
-    public Armor armor;
-    public Weapon weapon;
-    ArrayList bag = new ArrayList();
+abstract public class Character {
 
-    Character(String name, EnumRace race, EnumMaleFemale sex, EnumRole role, Integer level, Integer hp, Armor armor, Weapon weapon) {
-        super(name, race, sex, role, level, hp);
-        this.armor=armor;
-        this.weapon=weapon;
-    }
-  /*  private static String deleteSpases(String str)
-    {
-        while(str.contains(" ")) {
-            String replace = str.replace(" ", " ");
-            str=replace;
-        }
-        return str;
+    private String name;
+    private EnumMaleFemale sex;
+    private EnumRole role;
 
-    }*/
+    private Integer level;
+    private Integer hp;
 
-    @Override
-    public void say() {
-        super.say();
+    Character(String name, EnumMaleFemale sex, EnumRole role, Integer level, Integer hp) {
+        this.name = name;
+        this.sex = sex;
+        this.role = role;
+        this.level = level;
+        this.hp = hp;
     }
 
-    @Override
-    public void sayToCharacter(String question) {
-        super.sayToCharacter(question);
+    public void setLevel(Integer level) {
+        this.level = level;
+    }
+
+    public void setHp(Integer hp) {
+        this.hp = hp;
     }
 
     @Override
-    public  String toString() {
-        return super.toString() + "; Armor Defense: " + armor.Defense().toString() +"; Weapon AttackPower: "  + weapon.AttackPower().toString();
-    }
-    
-    public void showBag()
-    {
-        System.out.println("В сумке " + bag.size() + " элементов: ");
-            for (Object item : bag) {
-            System.out.println(item.toString());
-        }
+    public String toString() {
+        return "Name: " + name + "; Sex: " + sex + "; Role: " + role + "; Level: " + level + "; HP: " + hp;
     }
 
-    public void characterParametrs()
-    {
-        Integer defense = 0, attackPower = 0;
-
-    }
 }
