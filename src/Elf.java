@@ -12,7 +12,7 @@ public class Elf extends Character implements SpeakWithCharacter{
     public Armor armor;
     public Weapon weapon;
 
-    ArrayList bag = new ArrayList();
+  //  ArrayList bag = new ArrayList();
 
     Elf(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp, Armor armor, Weapon weapon) {
         super(name, sex, role, level, hp);
@@ -25,13 +25,13 @@ public class Elf extends Character implements SpeakWithCharacter{
         return super.toString() + "; Armor Defense: " + armor.Defense().toString() +"; Weapon AttackPower: "  + weapon.AttackPower().toString();
     }
     
-    public void showBag()
+    /*public void showBag()
     {
         System.out.println("В сумке " + bag.size() + " элементов: ");
             for (Object item : bag) {
             System.out.println(item.toString());
         }
-    }
+    }*/
 
     @Override
     public void say() {

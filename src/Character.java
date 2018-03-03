@@ -1,3 +1,4 @@
+import Bag.Backpack;
 import Enums.EnumMaleFemale;
 import Role.Role;
 
@@ -9,6 +10,27 @@ abstract public class Character{
     private Role role;
     private Integer level;
     private Integer hp;
+    protected Backpack backpack;
+
+    public String getName() {
+        return name;
+    }
+
+    public EnumMaleFemale getSex() {
+        return sex;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public Integer getHp() {
+        return hp;
+    }
 
     Character(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp) {
         this.name = name;

@@ -1,4 +1,5 @@
 import Enums.EnumMaleFemale;
+import Equipment.Item;
 import Role.Role;
 import Equipment.Weapon;
 import Equipment.Armor;
@@ -9,8 +10,11 @@ public class Main {
     public static void main(String[] args) {
 
         //Task1
-        Elf Sasha = new Elf("Sasha",EnumMaleFemale.Female,new Tank(),45,100500, new Armor(66,77), new Weapon(99,22));
+        Elf Sasha = new Elf("Sasha",EnumMaleFemale.Female,new Tank(),45,100500, new Armor("Чешуя дракона",55,11,77), new Weapon("Valyna",33,99,22));
 
+        Sasha.backpack.putItem(new Weapon("Sword",15,33,25));
+        Sasha.backpack.putItem(new Armor("Shield",25,18,99));
+        Sasha.backpack.putItem(new Item("Зелье",25));
 
 
 

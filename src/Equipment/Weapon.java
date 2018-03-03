@@ -1,12 +1,13 @@
 package Equipment;
 
-public class Weapon implements EquipmentParametrs {
+public class Weapon extends Item implements EquipmentParametrs {
 
     protected Integer attackPower;
     protected Integer defense;
 
-    public Weapon(Integer attackPower, Integer defense)
+    public Weapon(String nameItem, Integer quality,Integer attackPower, Integer defense)
     {
+        super(nameItem,quality);
         this.attackPower=attackPower;
         this.defense=defense;
     }
