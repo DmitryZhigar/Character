@@ -1,5 +1,9 @@
+package Characters;
+
 import Bag.Backpack;
 import Enums.EnumMaleFemale;
+import Equipment.Item;
+import Equipment.Potion;
 import Role.Role;
 
 
@@ -39,6 +43,11 @@ abstract public class Character{
         this.level = level;
         this.hp = hp;
         this.backpack = new Backpack();
+    }
+
+    public void usePotion(Potion potion)
+    {
+        setHp(getHp()+ potion.gethPburst());
     }
 
     public void setLevel(Integer level) {

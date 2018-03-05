@@ -1,3 +1,5 @@
+package Characters;
+
 import Enums.EnumMaleFemale;
 import Equipment.Armor;
 import Equipment.Weapon;
