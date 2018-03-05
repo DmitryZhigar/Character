@@ -12,7 +12,6 @@ public class Elf extends Character implements SpeakWithCharacter{
     public Armor armor;
     public Weapon weapon;
 
-  //  ArrayList bag = new ArrayList();
 
     Elf(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp, Armor armor, Weapon weapon) {
         super(name, sex, role, level, hp);

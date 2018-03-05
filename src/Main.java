@@ -1,5 +1,6 @@
 import Enums.EnumMaleFemale;
 import Equipment.Item;
+import Equipment.Potion;
 import Role.Role;
 import Equipment.Weapon;
 import Equipment.Armor;
@@ -14,8 +15,10 @@ public class Main {
 
         Sasha.backpack.putItem(new Weapon("Sword",15,33,25));
         Sasha.backpack.putItem(new Armor("Shield",25,18,99));
-        Sasha.backpack.putItem(new Item("Зелье",25));
+        Sasha.backpack.putItem(new Potion("Зелье",25,25));
 
+        Sasha.backpack.showBackpack();
+        Sasha.say();
 
 
        // DimaS.sayToCharacter("Efefefeff уаусу? Wqewrehtrbc   Цацаца? уаауау. Rаацсццусцсц ЦЦауау? Rмкцв уауа?");

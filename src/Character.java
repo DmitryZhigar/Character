@@ -38,6 +38,7 @@ abstract public class Character{
         this.role = role;
         this.level = level;
         this.hp = hp;
+        this.backpack = new Backpack();
     }
 
     public void setLevel(Integer level) {

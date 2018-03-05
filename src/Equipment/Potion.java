@@ -5,13 +5,18 @@ public class Potion extends Item{
     
     Integer HPburst;
 
-    Potion(String nameItem, Integer quality, Integer hpburst) {
+    public Potion(String nameItem, Integer quality, Integer hpburst) {
         super(nameItem, quality);
         this.HPburst=hpburst;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Зелье здоровья +" + HPburst;
+    }
+
     public void usePotion()
     {
-        Character.setHp();
+
     }
 }

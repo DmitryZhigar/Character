@@ -2,11 +2,12 @@ package Bag;
 
 import Equipment.Item;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Backpack {
 
-    List<Item> bacpack;
+    List<Item> bacpack = new ArrayList<Item>();
 
     public void putItem(Item item)
     {
