@@ -1,25 +1,22 @@
 package Equipment;
 
 
-import Characters.Gnom;
-import Characters.Orc;
-
 public class Potion extends Item{
     
-    private Integer hPburst;
+    private Integer points;
 
     public Potion(String nameItem, Integer quality, Integer hpburst) {
         super(nameItem, quality);
-        this.hPburst =hpburst;
+        this.points =hpburst;
     }
 
-    public Integer gethPburst() {
-        return hPburst;
+    public Integer getPoints() {
+        return points;
     }
 
     @Override
     public String toString() {
-        return "Зелье здоровья +" + hPburst;
+        return nameItem +" +" + points;
     }
 
 }

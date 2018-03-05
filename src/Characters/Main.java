@@ -1,6 +1,7 @@
 package Characters;
 
 import Enums.EnumMaleFemale;
+import Equipment.Item;
 import Equipment.Potion;
 import Equipment.Weapon;
 import Equipment.Armor;
@@ -22,8 +23,10 @@ public class Main {
         Sasha.backpack.showBackpack();
         Sasha.say();
 
-        Sasha.usePotion(new Potion("ЗельеОверПовер",1,20));
-
+        //Sasha.usePotion(new Potion("ЗельеОверПовер",1,20));
+        //Item item = Sasha.backpack.getItem(2);
+        //if(item instanceof Potion)
+        Sasha.usePotion((Potion) Sasha.backpack.getItem(2));
         System.out.println(Sasha);
 
 

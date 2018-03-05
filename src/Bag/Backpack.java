@@ -14,9 +14,9 @@ public class Backpack {
         bacpack.add(item);
     }
 
-    public void getItem(Integer number)
+    public Item getItem(Integer number)
     {
-        bacpack.get(number);
+       return bacpack.get(number);
     }
 
     public void showBackpack()
