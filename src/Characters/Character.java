@@ -46,13 +46,8 @@ abstract public class Character{
 
     public void usePotion(Potion potion)
     {
-        try {
             setHp(getHp()+ potion.getPoints());
-        }
-        catch (Exception e)
-        {
-            System.out.println("Выпить не удалось");
-        }
+
     }
 
     public void setLevel(Integer level) {
