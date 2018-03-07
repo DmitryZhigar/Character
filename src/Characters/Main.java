@@ -12,22 +12,29 @@ public class Main {
     public static void main(String[] args) {
 
         //Task1
-        Elf Sasha = new Elf("Sasha",EnumMaleFemale.Female,new Tank(),45,100500, new Armor("Чешуя дракона",55,11,77), new Weapon("Valyna",33,99,22));
+        Elf Pers = new Elf("Pers",EnumMaleFemale.Female,new Tank(),45,20, new Armor("Чешуя дракона",55,11,77), new Weapon("Valyna",33,99,22));
 
-        System.out.println(Sasha);
+        System.out.println(Pers);
 
-        Sasha.backpack.putItem(new Weapon("Sword",15,33,25));
-        Sasha.backpack.putItem(new Armor("Shield",25,18,99));
-        Sasha.backpack.putItem(new Potion("Зелье",25,25));
+        Pers.backpack.putItem(new Weapon("Sword",15,33,25));
+        Pers.backpack.putItem(new Armor("Shield",25,18,99));
+        Pers.backpack.putItem(new Potion("Зелье",25,25));
 
-        Sasha.backpack.showBackpack();
-        Sasha.say();
+        Pers.backpack.showBackpack();
+        Pers.say();
 
         //Sasha.usePotion(new Potion("ЗельеОверПовер",1,20));
         //Item item = Sasha.backpack.getItem(2);
         //if(item instanceof Potion)
-        Sasha.usePotion((Potion) Sasha.backpack.getItem(2));
-        System.out.println(Sasha);
+
+        Pers.setLevel(46);
+        Pers.usePotion((Potion) Pers.backpack.getItem(2));
+        System.out.println(Pers);
+
+
+
+
+
 
 
        // DimaS.sayToCharacter("Efefefeff уаусу? Wqewrehtrbc   Цацаца? уаауау. Rаацсццусцсц ЦЦауау? Rмкцв уауа?");
