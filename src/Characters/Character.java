@@ -2,18 +2,46 @@ package Characters;
 
 import Bag.Backpack;
 import Enums.EnumMaleFemale;
-import Equipment.Potion;
+import Equipment.*;
 import Role.Role;
 
 
 abstract public class Character{
 
+    private Weapon weapon;
+    private Armor armor;
     private String name;
     private EnumMaleFemale sex;
     private Role role;
     private Integer level;
     private Integer hp;
-    protected Backpack backpack;
+    private Backpack backpack;
+
+    Character(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp, Armor armor, Weapon weapon) {
+        this.name = name;
+        this.sex = sex;
+        this.role = role;
+        this.level = level;
+        this.hp = hp;
+        this.backpack = new Backpack();
+        this.armor=armor;
+        this.weapon=weapon;
+    }
+
+    Character(String name, EnumMaleFemale sex, Role role) {
+        this.name = name;
+        this.sex = sex;
+        this.role = role;
+        this.level = 1;
+        this.hp = 10;
+        this.backpack = new Backpack();
+        this.armor=new Armor("First Armor",1,1,1);
+        this.weapon=new Weapon("First Sword",1,1,1);
+    }
+
+    public Backpack getBackpack() {
+        return backpack;
+    }
 
     public String getName() {
         return name;
@@ -35,19 +63,20 @@ abstract public class Character{
         return hp;
     }
 
-    Character(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp) {
-        this.name = name;
-        this.sex = sex;
-        this.role = role;
-        this.level = level;
-        this.hp = hp;
-        this.backpack = new Backpack();
+    public Weapon getWeapon() {
+        return weapon;
     }
 
-    public void usePotion(Potion potion)
-    {
-            setHp(getHp()+ potion.getPoints());
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
 
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+    }
+
+    public Armor getArmor() {
+        return armor;
     }
 
     public void setLevel(Integer level) {
@@ -60,7 +89,7 @@ abstract public class Character{
 
     @Override
     public String toString() {
-        return "Name: " + name + "; Sex: " + sex + "; Role: " + role + "; Level: " + level + "; HP: " + hp;
+        return "Name: " + name + "; Sex: " + sex + "; Role: " + role + "; Level: " + level + "; HP: " + hp + "; Armor: " + armor + "; Weapon: " + weapon;
     }
 
 }

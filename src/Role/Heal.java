@@ -1,14 +1,16 @@
 package Role;
 
+import Characters.Character;
+
 public class Heal implements Role{
 
     @Override
-    public void fight() {
+    public void fight(Character character, Character target) {
 
     }
 
     @Override
-    public void heal() {
+    public void heal(Character character) {
 
     }
 

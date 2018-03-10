@@ -1,13 +1,16 @@
 package Equipment;
 
 
-public class Potion extends Item{
+import Characters.Character;
+import Characters.Elf;
+
+public class Potion extends Item implements Usable{
     
     private Integer points;
 
-    public Potion(String nameItem, Integer quality, Integer hpburst) {
+    public Potion(String nameItem, Integer quality, Integer points) {
         super(nameItem, quality);
-        this.points =hpburst;
+        this.points =points;
     }
 
     public Integer getPoints() {
@@ -19,4 +22,9 @@ public class Potion extends Item{
         return nameItem +" +" + points;
     }
 
+
+    @Override
+    public void use(Character character) {
+        character.setHp(character.getHp() + points);
+    }
 }

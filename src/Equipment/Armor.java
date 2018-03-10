@@ -1,9 +1,9 @@
 package Equipment;
 
-public class Armor extends Item implements EquipmentParametrs {
+public class Armor extends Item implements Equipment {
 
-    public Integer attackPower;
-    public Integer defense;
+    private Integer attackPower;
+    private Integer defense;
 
     public Armor(String nameItem, Integer quality,Integer attackPower, Integer defense)
     {

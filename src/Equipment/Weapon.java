@@ -1,6 +1,6 @@
 package Equipment;
 
-public class Weapon extends Item implements EquipmentParametrs {
+public class Weapon extends Item implements Equipment {
 
     protected Integer attackPower;
     protected Integer defense;
