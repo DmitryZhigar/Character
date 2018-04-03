@@ -1,6 +1,6 @@
-package Bag;
+package com.zhigar.game.bag;
 
-import Equipment.Item;
+import com.zhigar.game.equipment.Item;
 
 import java.util.ArrayList;
 import java.util.List;
