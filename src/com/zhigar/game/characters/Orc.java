@@ -7,13 +7,6 @@ import com.zhigar.game.equipment.Weapon;
 import com.zhigar.game.role.Role;
 import com.zhigar.text.Text;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
-
 public class Orc extends com.zhigar.game.characters.Character implements SpeakWithCharacter{
 
     Orc(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp, Armor armor, Weapon weapon) {
@@ -52,8 +45,9 @@ public class Orc extends com.zhigar.game.characters.Character implements SpeakWi
     }
 
     @Override
-    public String speakWithCharacter(Text text) {
-        return "";
+    public Text speakWithCharacter(String string) {
+
+        return null;
     }
 
    /* @Override

@@ -7,11 +7,6 @@ import com.zhigar.game.equipment.Armor;
 import com.zhigar.game.equipment.Weapon;
 import com.zhigar.text.Text;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import static jdk.nashorn.internal.objects.NativeString.toLowerCase;
-
 public class Human extends Character implements SpeakWithCharacter{
 
     Human(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp, Armor armor, Weapon weapon) {
@@ -50,8 +45,9 @@ public class Human extends Character implements SpeakWithCharacter{
     }
 
     @Override
-    public String speakWithCharacter(Text text) {
-        return "";
+    public Text speakWithCharacter(String string) {
+
+        return null;
     }
 
   /*  @Override

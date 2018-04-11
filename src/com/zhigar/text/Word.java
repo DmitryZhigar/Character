@@ -15,7 +15,7 @@ public class Word {
 
     public char getLastChar()
     {
-       return word.charAt(word.length()+1);
+       return word.charAt(word.length()-1);
     }
 
     @Override

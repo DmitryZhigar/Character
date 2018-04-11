@@ -8,13 +8,23 @@ import java.util.regex.Pattern;
 public class Sentence {
 
     private List<Word> listWords = new ArrayList<>();
+    private String sentense;
 
     public Sentence (String sentence)
     {
-        Matcher m = Pattern.compile("[\\w’]+|[.,!?;]").matcher(sentence);
+        this.sentense=sentence;
+        Matcher m = Pattern.compile("((\\b[^\\s]+\\b)((?<=\\.\\w).\\.|\\?|\\!)?)").matcher(sentence);   //((\b[^\s]+\b)((?<=\.\w).)?)    (?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!)\s........((\b[^\s]+\b)((?<=\.\w).\.|\?|\!)?)
         while (m.find()) {
             listWords.add(new Word(m.group()));
         }
+    }
+
+    public String getSentense() {
+        return sentense;
+    }
+
+    public void setSentense(String sentense) {
+        this.sentense = sentense;
     }
 
     public List<Word> getListWords() {

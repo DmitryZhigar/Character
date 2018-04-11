@@ -7,9 +7,6 @@ import com.zhigar.game.equipment.Armor;
 import com.zhigar.game.equipment.Weapon;
 import com.zhigar.text.Text;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class Elf extends Character implements SpeakWithCharacter{
 
 
@@ -54,8 +51,9 @@ public class Elf extends Character implements SpeakWithCharacter{
     }
 
     @Override
-    public String speakWithCharacter(Text text) {
-        return "";
+    public Text speakWithCharacter(String string) {
+
+        return null;
     }
 
    /* @Override

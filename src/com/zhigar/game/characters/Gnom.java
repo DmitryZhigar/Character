@@ -5,14 +5,7 @@ import com.zhigar.game.equipment.Usable;
 import com.zhigar.game.role.Role;
 import com.zhigar.game.equipment.Armor;
 import com.zhigar.game.equipment.Weapon;
-import com.zhigar.text.Sentence;
 import com.zhigar.text.Text;
-import com.zhigar.text.Word;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class Gnom extends Character implements SpeakWithCharacter{
 
@@ -52,8 +45,10 @@ public class Gnom extends Character implements SpeakWithCharacter{
     }
 
     @Override
-    public String speakWithCharacter(Text text) {
-        return text.findSentense('?').toString().replaceAll("\\b[a-zA-Zа-яА-Я]","");
+    public Text speakWithCharacter(String string) {
+            Text text = new Text(string);
+            text.setSentences(Text.replace(text.findSentense('?'),"\\b[a-zA-Zа-яА-Я]",""));
+            return  text;
     }
 
 

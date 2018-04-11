@@ -5,5 +5,6 @@ import com.zhigar.text.Text;
 public interface SpeakWithCharacter {
 
      void say();
-     String speakWithCharacter(Text text);
+
+     Text speakWithCharacter(String string);
 }

@@ -35,7 +35,7 @@ public class Main {
         pers.showCombatStats();*/
 
         Gnom gnom = new Gnom("11",EnumMaleFemale.Female,new Tank());
-        System.out.println(gnom.speakWithCharacter(new Text("Коля ты хороший человек! Правда? Нет.")));
+        System.out.print(gnom.speakWithCharacter("Коля ты хороший человек! Правда? Нет."));
 
 
 /*
