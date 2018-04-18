@@ -1,16 +1,12 @@
 package com.zhigar.game.characters;
 
 import com.zhigar.game.enums.EnumMaleFemale;
-import com.zhigar.game.equipment.Potion;
-import com.zhigar.game.equipment.Weapon;
-import com.zhigar.game.equipment.Armor;
-import com.zhigar.game.role.DamageDealler;
 import com.zhigar.game.role.Tank;
-import com.zhigar.text.Text;
+
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
       /*  DamageDealler damageDealler = new DamageDealler();
         Elf pers = new Elf("pers",EnumMaleFemale.Female,new Tank(),45,10000, new Armor("Броня",55,11,5), new Weapon("Valyna",33,99,22));
@@ -35,30 +31,18 @@ public class Main {
         pers.showCombatStats();*/
 
         Gnom gnom = new Gnom("11",EnumMaleFemale.Female,new Tank());
-        System.out.print(gnom.speakWithCharacter("Коля ты хороший человек! Правда? Нет."));
+        System.out.println(gnom.speakWithCharacter("Коля ты хороший человек! Правда ыыы? Нет. Врешь наверное?"));
+
+        Elf elf = new Elf("111",EnumMaleFemale.Female,new Tank());
+         System.out.println(elf.speakWithCharacter("Коля человек! Лена Головач! Скажи плыз? зачем тебе это!"));
+
+        Human human = new Human("111",EnumMaleFemale.Female,new Tank());
+        System.out.println(human.speakWithCharacter("Sefe sssd sswswswssssdd, effesrd. Ttt trrrrwww  w! Q qwe e."));
+
+        Orc orc = new Orc("111",EnumMaleFemale.Female,new Tank());
+        System.out.println(orc.speakWithCharacter("Kolia you are a good man! Kolia is not here. You are freak all the same!"));
 
 
-/*
-        ArrayList<String> items;
-        items = TextService.splitOnSentences("Коля ты хороший человек! Правда? Нет.");
 
-        for(String item : items){
-            System.out.println(item);
-        }
-        System.out.println("----------------------");
-
-        items = TextService.findSentences(items, '.');
-
-        for(String item : items){
-            System.out.println(item);
-        }
-        System.out.println("----------------------");
-*/
-
-        //pers2.getBackpack().putItem(new Potion());
-        // DimaS.sayToCharacter("Efefefeff уаусу? Wqewrehtrbc   Цацаца? уаауау. Rаацсццусцсц ЦЦауау? Rмкцв уауа?");
-      //  Sasha.sayToCharacter("Ты кто такой? Давай ка ты досвидания! Или приседания? ");
-      //  DimaZ.sayToCharacter("Привет как твои дела? Как 111. твои товарищи?");
-      //  Hum.sayToCharacter("Ты кто такой ой.");
     }
 }

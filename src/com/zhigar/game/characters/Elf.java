@@ -1,6 +1,7 @@
 package com.zhigar.game.characters;
 
 import com.zhigar.game.enums.EnumMaleFemale;
+import com.zhigar.game.enums.TypeOfSentense;
 import com.zhigar.game.equipment.Usable;
 import com.zhigar.game.role.Role;
 import com.zhigar.game.equipment.Armor;
@@ -18,7 +19,6 @@ public class Elf extends Character implements SpeakWithCharacter{
     Elf(String name, EnumMaleFemale sex, Role role) {
         super(name, sex, role);
     }
-
 
     public void useItem(Usable item)
     {
@@ -51,44 +51,9 @@ public class Elf extends Character implements SpeakWithCharacter{
     }
 
     @Override
-    public Text speakWithCharacter(String string) {
-
-        return null;
+    public Text speakWithCharacter(String string) throws Exception {
+        Text text = new Text(string);
+        text.replaceForElf(Text.typeOfSentense(TypeOfSentense.exclamation));
+        return  text;
     }
-
-   /* @Override
-    public void speakWithCharacter(String question) {
-        String answer = "", tmp = "";
-        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(question);
-        while (m.find()) {
-            tmp = m.group();
-            if (tmp.charAt(tmp.length() - 1) == '!') {
-                String[] words = tmp.split("\\p{P}?[ \\t\\n\\r]+");
-                words[words.length-1]=words[words.length-1].substring(0,words[words.length-1].length()-1);
-                if (words.length > 3) {
-                    answer += words[words.length - 1] + " ";
-                    for (int i = 2; i <= words.length - 2; i++) {
-                        answer += words[i] + " ";
-                    }
-                    answer += words[1] + "!";
-                } else answer += words[2] + " " + words[1];
-
-            } else answer += tmp;
-        }
-        System.out.println(answer);
-    }*/
-
-   /* public void ttttttttt(Text text)
-    {
-        for (int i = 0; i < text.getSentences().size(); i++)
-        {
-            if(Text.findSentense(text.getSentences().get(i), '?'))
-            {
-                (text.getSentences().get(i)).
-            }
-        }
-    }*/
-
-
-
 }

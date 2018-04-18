@@ -4,9 +4,13 @@ public class Word {
 
     private String word;
 
-    public Word(String word)
+    public Word(String word) {
+        this.word = word;
+    }
+
+    public Word()
     {
-        this.word=word;
+
     }
 
     public String getWord() {
@@ -18,13 +22,12 @@ public class Word {
        return word.charAt(word.length()-1);
     }
 
+    public void setWord(String word) {
+        this.word = word;
+    }
+
     @Override
     public String toString() {
         return word;
-    }
-
-    public String wordToLower()
-    {
-        return "";
     }
 }

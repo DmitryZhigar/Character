@@ -1,6 +1,7 @@
 package com.zhigar.game.characters;
 
 import com.zhigar.game.enums.EnumMaleFemale;
+import com.zhigar.game.enums.TypeOfSentense;
 import com.zhigar.game.equipment.Usable;
 import com.zhigar.game.role.Role;
 import com.zhigar.game.equipment.Armor;
@@ -46,29 +47,10 @@ public class Human extends Character implements SpeakWithCharacter{
 
     @Override
     public Text speakWithCharacter(String string) {
+        Text text = new Text(string);
+        text.replaceH(Text.typeOfSentense(TypeOfSentense.dot));
+        return  text;
 
-        return null;
     }
-
-  /*  @Override
-    public void speakWithCharacter(String question) {
-        String answer = "", tmp = "";
-        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(toLowerCase(question));
-        while (m.find()) {
-            tmp = m.group();
-            if (tmp.charAt(tmp.length() - 1) == '.') {
-                //   System.out.println("предложение последняя буква " + tmp.charAt(tmp.length() - 2) + " первая буква " + tmp.charAt(0));
-                String[] words = tmp.split("\\p{P}?[ \\t\\n\\r]+");
-                for (int i = 0; i < words.length; i++) {
-                    if (words[i].charAt(0) != tmp.charAt(0) ||
-                            words[i].charAt(words[i].length() - 1) != tmp.charAt(tmp.length() - 2)) {
-                        answer += words[i] + " ";
-                    }
-                }
-
-            } else answer += tmp;
-        }
-        System.out.println(answer);
-    }*/
 
 }

@@ -1,6 +1,7 @@
 package com.zhigar.game.characters;
 
 import com.zhigar.game.enums.EnumMaleFemale;
+import com.zhigar.game.enums.TypeOfSentense;
 import com.zhigar.game.equipment.Armor;
 import com.zhigar.game.equipment.Usable;
 import com.zhigar.game.equipment.Weapon;
@@ -46,36 +47,9 @@ public class Orc extends com.zhigar.game.characters.Character implements SpeakWi
 
     @Override
     public Text speakWithCharacter(String string) {
-
-        return null;
+        Text text = new Text(string);
+        text.removeWords();
+        return  text;
     }
-
-   /* @Override
-    public void speakWithCharacter(String question) {
-        String answer = "", tmp = "";
-        Boolean counter = false;
-        ArrayList<String> firstSentense = new ArrayList<String>();
-        ;
-        ArrayList<String> words = new ArrayList<String>();
-
-        Matcher m = Pattern.compile("([^.!?]+[.!?])").matcher(toLowerCase(question));
-        while (m.find()) {
-            tmp = m.group();
-            if (counter) {
-                words.addAll(Arrays.asList(tmp.split("\\p{P}?[ \\t\\n\\r]+")));
-            } else {
-                firstSentense.addAll(Arrays.asList(tmp.split("\\p{P}?[ \\t\\n\\r]+")));
-                counter = true;
-            }
-
-        }
-
-        for (int i = 0; i < firstSentense.size(); i++)
-            if (!words.contains(firstSentense.get(i))) {
-                answer += firstSentense.get(i) + " ";
-            }
-
-        System.out.println(answer);
-    }*/
 
 }

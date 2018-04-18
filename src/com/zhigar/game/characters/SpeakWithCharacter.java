@@ -6,5 +6,5 @@ public interface SpeakWithCharacter {
 
      void say();
 
-     Text speakWithCharacter(String string);
+     Text speakWithCharacter(String string) throws Exception;
 }

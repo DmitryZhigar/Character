@@ -1,6 +1,7 @@
 package com.zhigar.game.characters;
 
 import com.zhigar.game.enums.EnumMaleFemale;
+import com.zhigar.game.enums.TypeOfSentense;
 import com.zhigar.game.equipment.Usable;
 import com.zhigar.game.role.Role;
 import com.zhigar.game.equipment.Armor;
@@ -18,6 +19,11 @@ public class Gnom extends Character implements SpeakWithCharacter{
         super(name, sex, role);
     }
 
+    public void useItem(Usable item)
+    {
+        item.use(this);
+    }
+
     @Override
     public long calculateAttack() {
         return super.calculateAttack();
@@ -28,16 +34,10 @@ public class Gnom extends Character implements SpeakWithCharacter{
         return super.calculateDefense();
     }
 
-    public void useItem(Usable item)
-    {
-        item.use(this);
-    }
-
     @Override
     public  String toString() {
         return super.toString();
     }
-
 
     @Override
     public void say() {
@@ -47,7 +47,7 @@ public class Gnom extends Character implements SpeakWithCharacter{
     @Override
     public Text speakWithCharacter(String string) {
             Text text = new Text(string);
-            text.setSentences(Text.replace(text.findSentense('?'),"\\b[a-zA-Zа-яА-Я]",""));
+            text.replace(Text.typeOfSentense(TypeOfSentense.question),"\\b[a-zA-Zа-яА-Я]","");
             return  text;
     }
 
