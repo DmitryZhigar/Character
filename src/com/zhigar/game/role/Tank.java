@@ -2,7 +2,9 @@ package com.zhigar.game.role;
 
 import com.zhigar.game.characters.Character;
 
-public class Tank implements Role {
+import java.io.Serializable;
+
+public class Tank implements Role, Serializable {
 
     private  int absorb = 40;
     private  boolean flagAbsorb = false;

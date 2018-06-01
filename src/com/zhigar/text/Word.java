@@ -8,18 +8,8 @@ public class Word {
         this.word = word;
     }
 
-    public Word()
-    {
-
-    }
-
     public String getWord() {
         return word;
-    }
-
-    public char getLastChar()
-    {
-       return word.charAt(word.length()-1);
     }
 
     public void setWord(String word) {

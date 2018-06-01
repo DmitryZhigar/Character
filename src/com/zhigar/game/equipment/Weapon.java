@@ -1,6 +1,8 @@
 package com.zhigar.game.equipment;
 
-public class Weapon extends Item implements Equipment {
+import java.io.Serializable;
+
+public class Weapon extends Item implements Equipment, Serializable {
 
     private Integer attackPower;
     private Integer defense;

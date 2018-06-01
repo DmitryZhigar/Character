@@ -2,7 +2,7 @@ package com.zhigar.game.role;
 
 import com.zhigar.game.characters.Character;
 
-public interface Role {
+public interface Role  {
 
    void ability_1(Character character, Character target);
 

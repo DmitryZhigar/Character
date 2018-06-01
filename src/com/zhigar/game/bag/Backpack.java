@@ -2,10 +2,11 @@ package com.zhigar.game.bag;
 
 import com.zhigar.game.equipment.Item;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Backpack {
+public class Backpack implements Serializable {
 
     List<Item> bacpack = new ArrayList<Item>();
 

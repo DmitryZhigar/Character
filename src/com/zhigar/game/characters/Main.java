@@ -1,48 +1,58 @@
 package com.zhigar.game.characters;
 
+import com.zhigar.decorator.Decorator;
 import com.zhigar.game.enums.EnumMaleFemale;
 import com.zhigar.game.role.Tank;
+import com.zhigar.streams.Connector;
+
+import java.io.*;
+import java.util.ArrayList;
 
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-      /*  DamageDealler damageDealler = new DamageDealler();
-        Elf pers = new Elf("pers",EnumMaleFemale.Female,new Tank(),45,10000, new Armor("Броня",55,11,5), new Weapon("Valyna",33,99,22));
-        pers.getBackpack().putItem(new Weapon("Blade",15,33,25));
-        pers.getBackpack().putItem(new Armor("Great Shield",25,18,99));
-        pers.getBackpack().putItem(new Potion("Зелье здоровья",25,25));
-        pers.getBackpack().showBackpack();
-        pers.setLevel(111);
-        pers.useItem(new Potion("ff",1,333));
-        Orc pers2 = new Orc("pers2",EnumMaleFemale.Female,damageDealler);
-        pers2.setArmor(new Armor("Valuna",2,1111,2));
-        pers2.setWeapon(new Weapon("Weap",1,100,1));
-        System.out.println();
+       System.out.println("------stroki-----");
+        Gnom gnom = new Gnom("Gnom",EnumMaleFemale.Female, new Tank());
+        System.out.println(gnom.say("ПРивет, как дела? что нового? Крутяк!"));
+        Elf elf = new Elf("Elf",EnumMaleFemale.Female,new Tank());
+        System.out.println(elf.say("Лена Головач! Ахахахахах! Лол кек чебурек! ыыы?"));
+        Orc orc = new Orc("Orc",EnumMaleFemale.Female,new Tank());
+        System.out.println(orc.say("Лена Головач как твои дела? Как твои покемоны? Головач такая головач!"));
+        Human human = new Human("Human",EnumMaleFemale.Female,new Tank());
+        System.out.println(human.say("Пле Пвцви приветульки. Пле Пвцви приветульки! Пле Пвцви приветульки"));
 
-        pers.showCombatStats();
-        pers2.getRole().ability_1(pers2,pers);
-        pers.showCombatStats();
+        System.out.println("-----3.1------");
 
-        pers2.getRole().ability_2(pers2,pers);
+        ArrayList<Character> characters = new ArrayList<>();
+        characters.add(gnom);
+        characters.add(human);
+        Connector.writeToFile(characters);
 
-        pers2.getRole().restoreAfterCombat(pers2);
-        pers.showCombatStats();*/
+        ArrayList<Character> charactersFromFile;
 
-        Gnom gnom = new Gnom("11",EnumMaleFemale.Female,new Tank());
-        System.out.println(gnom.speakWithCharacter("Коля ты хороший человек! Правда ыыы? Нет. Врешь наверное?"));
+        charactersFromFile=Connector.readFromFile();
 
-        Elf elf = new Elf("111",EnumMaleFemale.Female,new Tank());
-         System.out.println(elf.speakWithCharacter("Коля человек! Лена Головач! Скажи плыз? зачем тебе это!"));
+        for (Character character: charactersFromFile)
+        {
+            System.out.println(character.toString());
+        }
 
-        Human human = new Human("111",EnumMaleFemale.Female,new Tank());
-        System.out.println(human.speakWithCharacter("Sefe sssd sswswswssssdd, effesrd. Ttt trrrrwww  w! Q qwe e."));
-
-        Orc orc = new Orc("111",EnumMaleFemale.Female,new Tank());
-        System.out.println(orc.speakWithCharacter("Kolia you are a good man! Kolia is not here. You are freak all the same!"));
+        System.out.println("-----3.2------");
 
 
+        try (Decorator dr = new Decorator(new FileReader("111.txt"))) {
+            String s;
+            while ((s = dr.readLine()) != null) {
+                System.out.println(s);
+            }
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+
+       // Decorator.writeFromFileToFile("111.txt","trrr.txt");
 
     }
 }

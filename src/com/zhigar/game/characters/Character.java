@@ -6,9 +6,12 @@ import com.zhigar.game.enums.EnumMaleFemale;
 import com.zhigar.game.role.Role;
 import com.zhigar.game.equipment.Armor;
 import com.zhigar.game.equipment.Weapon;
+import com.zhigar.text.Sentence;
+
+import java.io.Serializable;
 
 
-abstract public class Character{
+abstract public class Character implements Serializable {
 
     private Weapon weapon;
     private Armor armor;
@@ -96,7 +99,7 @@ abstract public class Character{
 
     @Override
     public String toString() {
-        return "Name: " + name + "; Sex: " + sex + "; Role: " + role + "; Level: " + level + "; HP: " + hp + "; Armor: " + armor + "; Weapon: " + weapon;
+        return "\nName: " + name + "; \nSex: " + sex + "; \nRole: " + role + "; \nLevel: " + level + "; \nHP: " + hp + "; \nArmor: " + armor + "; \nWeapon: " + weapon;
     }
 
     public long calculateAttack() {

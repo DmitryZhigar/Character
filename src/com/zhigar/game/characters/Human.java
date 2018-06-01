@@ -6,7 +6,9 @@ import com.zhigar.game.equipment.Usable;
 import com.zhigar.game.role.Role;
 import com.zhigar.game.equipment.Armor;
 import com.zhigar.game.equipment.Weapon;
+import com.zhigar.text.Sentence;
 import com.zhigar.text.Text;
+import com.zhigar.text.Word;
 
 public class Human extends Character implements SpeakWithCharacter{
 
@@ -41,15 +43,32 @@ public class Human extends Character implements SpeakWithCharacter{
     }
 
     @Override
-    public void say() {
-        System.out.println("Greetings my friend!");
+    public String say() {
+        return "Greetings my friend!";
     }
 
     @Override
-    public Text speakWithCharacter(String string) {
+    public String say(String string) {
         Text text = new Text(string);
-        text.replaceH(Text.typeOfSentense(TypeOfSentense.dot));
-        return  text;
+        char firstChar, lastChar;
+        for (Sentence sentence: text.getSentences()) {
+            if (sentence.getType().equals(Sentence.SentenceType.DOT)) {
+                if(sentence.sizeSentense()>1)
+                {
+                    firstChar=sentence.getWords().get(0).getWord().charAt(0);
+                    lastChar=sentence.getWords().get(sentence.sizeSentense()-1).getWord().charAt(sentence.getWords().get(sentence.getWords().size()-2).getWord().length()-1);
+                    for(int i=0; i<sentence.getWords().size(); i++)
+                    {
+                       if(sentence.getWords().get(i).getWord().charAt(0) == firstChar &&
+                               sentence.getWords().get(i).getWord().charAt(sentence.getWords().get(i).getWord().length()-1) == lastChar)
+                           sentence.getWords().remove(i);
+                    }
+
+
+                }
+            }
+        }
+        return  text.toString();
 
     }
 

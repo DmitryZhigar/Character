@@ -1,5 +1,8 @@
 package com.zhigar.text;
 
+import com.zhigar.game.enums.TypeOfSentense;
+
+import java.awt.font.ShapeGraphicAttribute;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -7,68 +10,78 @@ import java.util.regex.Pattern;
 
 public class Sentence {
 
-    private List<Word> listWords;
-    private String sentenseOriginal;
+    private List<Word> words;
 
-    public Sentence (String sentence)
-    {
-        this.sentenseOriginal = sentence;
-        this.listWords = generateWords(sentenseOriginal);
+    public Sentence (String sentence) {
+        this.words = generateWords(sentence);
     }
 
     private List<Word> generateWords(String sentense) {
         List<Word> words = new LinkedList<>();
-        Matcher m = Pattern.compile("((\\b[^\\s]+\\b)((?<=\\.\\w).\\.|\\?|\\!)?)").matcher(sentense);
-        while (m.find()) {
-            words.add(new Word(m.group()));
-        }
+        String massiveOfWords[] = sentense.split("\\s|((?<=\\.|\\?|\\!|\\,|\\;)|(?=\\.|\\?|\\!|\\,|\\;))");
+        for (String oneWord : massiveOfWords) {
+            if(oneWord.equals("?")||oneWord.equals(".")||oneWord.equals("!")||oneWord.equals(","))
+            {
+                words.add(new Punct(oneWord));
+            }
+            else if(!(oneWord.equals(" ")))
+            {
+                words.add(new Word(oneWord));
+
+            } }
         return words;
     }
 
-    public String getSentenseOriginal() {
-        return sentenseOriginal;
-    }
-
-    public void setSentenceWord(Integer position , String string)
+    public int sizeSentense()
     {
-        this.sentenseOriginal="";
-        this.listWords.set(position, new Word(string));
-        for (Word word:
-             this.listWords) {
-            this.sentenseOriginal+= word + " ";
-        }
+        return words.size()-1;
     }
 
-    public void setSentenseOriginal(String sentenseOriginal) {
-        this.sentenseOriginal = sentenseOriginal;
+    public List<Word> getWords() {
+        return words;
     }
 
-    public void setSentense(String sentenseOriginal) {
-        this.listWords = generateWords(sentenseOriginal);
-        this.sentenseOriginal = sentenseOriginal;
+    public void setWords(List<Word> words) {
+        this.words = words;
     }
-
-    public List<Word> getListWords() {
-        return listWords;
-    }
-
-    public char getLastCharOfSentense()
+    public void setWord( int position,Word word)
     {
-       return sentenseOriginal.charAt(sentenseOriginal.length()-1);
+        words.set(position,word);
     }
 
-    public int sizelistWords()
-    {
-        return listWords.size();
+    public SentenceType getType() {
+        SentenceType type;
+        Word lastWord = words.get(words.size()-1);
+            switch (lastWord.getWord()){
+                case "?": type = SentenceType.QUESTION;
+                break;
+                case ".": type = SentenceType.DOT;
+                break;
+                case "!": type = SentenceType.EXCLAMATION;
+                break;
+                default: type = SentenceType.UNDEFINED;
+            }
+            return  type;
     }
 
     @Override
     public String toString() {
-        return sentenseOriginal;
+        StringBuilder str = new StringBuilder();
+        for (Word word : words) {
+            if (word instanceof Punct) {
+                str.append(word);
+            }else
+            str.append(" "+ word);
+        }
+        return str.toString();
     }
 
-
-
+   public enum SentenceType {
+       UNDEFINED,
+       QUESTION,
+       DOT,
+       EXCLAMATION
+   }
 }
 
 //((\b[^\s]+\b)((?<=\.\w).)?)    (?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?|\!)\s........((\b[^\s]+\b)((?<=\.\w).\.|\?|\!)?)

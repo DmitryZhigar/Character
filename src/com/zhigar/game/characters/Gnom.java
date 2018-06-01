@@ -6,21 +6,27 @@ import com.zhigar.game.equipment.Usable;
 import com.zhigar.game.role.Role;
 import com.zhigar.game.equipment.Armor;
 import com.zhigar.game.equipment.Weapon;
+import com.zhigar.text.Punct;
+import com.zhigar.text.Sentence;
 import com.zhigar.text.Text;
+import com.zhigar.text.Word;
 
-public class Gnom extends Character implements SpeakWithCharacter{
+import java.io.Serializable;
 
+public class Gnom extends Character implements SpeakWithCharacter, Serializable {
 
-    public Gnom(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp, Armor armor, Weapon weapon) {
-        super(name, sex, role, level, hp,armor,weapon);
+    private static final long serialVersionUID = 2;
+
+    public Gnom(String name, EnumMaleFemale sex, Role role, Integer level, Integer hp, Armor armor,
+                Weapon weapon) {
+        super(name, sex, role, level, hp, armor, weapon);
     }
 
     Gnom(String name, EnumMaleFemale sex, Role role) {
         super(name, sex, role);
     }
 
-    public void useItem(Usable item)
-    {
+    public void useItem(Usable item) {
         item.use(this);
     }
 
@@ -35,20 +41,28 @@ public class Gnom extends Character implements SpeakWithCharacter{
     }
 
     @Override
-    public  String toString() {
+    public String toString() {
         return super.toString();
     }
 
     @Override
-    public void say() {
-        System.out.println("Greetings my friend!");
+    public String say() {
+        return say("Greetings my friend!");
     }
 
     @Override
-    public Text speakWithCharacter(String string) {
-            Text text = new Text(string);
-            text.replace(Text.typeOfSentense(TypeOfSentense.question),"\\b[a-zA-Zа-яА-Я]","");
-            return  text;
+    public String say(String string) {
+        Text text = new Text(string);
+        for (Sentence sentence: text.getSentences()) {
+            if (sentence.getType().equals(Sentence.SentenceType.QUESTION)) {
+                for (Word word: sentence.getWords()) {
+                    if (!(word instanceof Punct)) {
+                        word.setWord(word.getWord().substring(1));
+                    }
+                }
+            }
+        }
+        return text.toString();
     }
 
 

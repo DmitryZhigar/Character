@@ -6,7 +6,12 @@ import com.zhigar.game.equipment.Armor;
 import com.zhigar.game.equipment.Usable;
 import com.zhigar.game.equipment.Weapon;
 import com.zhigar.game.role.Role;
+import com.zhigar.text.Punct;
+import com.zhigar.text.Sentence;
 import com.zhigar.text.Text;
+import com.zhigar.text.Word;
+
+import java.util.*;
 
 public class Orc extends com.zhigar.game.characters.Character implements SpeakWithCharacter{
 
@@ -41,15 +46,39 @@ public class Orc extends com.zhigar.game.characters.Character implements SpeakWi
     }
 
     @Override
-    public void say() {
-        System.out.println("Greetings my friend!");
+    public String say() {
+        return "Greetings my friend!";
     }
 
     @Override
-    public Text speakWithCharacter(String string) {
-        Text text = new Text(string);
-        text.removeWords();
-        return  text;
+    public String say(String text) {
+        Text newText = new Text(text);
+        List<String> firstSentence = new ArrayList<>();
+        List<String> listOfSentences = new ArrayList<>();
+        int i = 0;
+        for (Sentence sentence : newText.getSentences()) {
+            i++;
+            for (Word word : sentence.getWords()) {
+                if (!(word instanceof Punct) && i != 1)
+                    listOfSentences.add(word.getWord());
+                else if (i == 1)
+                    firstSentence.add(word.getWord());
+            }
+        }
+
+        Set<String> set = new LinkedHashSet<>(listOfSentences);
+
+        int sizeFirstSentence = firstSentence.size() - 1;
+        for (int j = 0; j < sizeFirstSentence; j++) {
+            if (Arrays.asList(set.toArray()).contains(firstSentence.get(j))) {
+                newText.getSentences().get(0).getWords().remove(j);
+                firstSentence.remove(j);
+                j--;
+                sizeFirstSentence -= 1;
+            }
+        }
+        return newText.getSentences().get(0).toString();
     }
+
 
 }

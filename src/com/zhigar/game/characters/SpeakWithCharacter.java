@@ -4,7 +4,7 @@ import com.zhigar.text.Text;
 
 public interface SpeakWithCharacter {
 
-     void say();
+    public String say();
 
-     Text speakWithCharacter(String string) throws Exception;
+    public String say(String string) throws Exception;
 }

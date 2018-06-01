@@ -1,5 +1,7 @@
 package com.zhigar.game.enums;
 
-public enum EnumMaleFemale {
+import java.io.Serializable;
+
+public enum EnumMaleFemale implements Serializable {
     Man, Female
 }

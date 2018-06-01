@@ -6,7 +6,10 @@ import com.zhigar.game.equipment.Usable;
 import com.zhigar.game.role.Role;
 import com.zhigar.game.equipment.Armor;
 import com.zhigar.game.equipment.Weapon;
+import com.zhigar.text.Punct;
+import com.zhigar.text.Sentence;
 import com.zhigar.text.Text;
+import com.zhigar.text.Word;
 
 public class Elf extends Character implements SpeakWithCharacter{
 
@@ -46,14 +49,26 @@ public class Elf extends Character implements SpeakWithCharacter{
     }
 
     @Override
-    public void say() {
-        System.out.println("Greetings my friend!");
+    public String say() {
+        return "Greetings my friend!";
     }
 
     @Override
-    public Text speakWithCharacter(String string) throws Exception {
+    public String say(String string) {
         Text text = new Text(string);
-        text.replaceForElf(Text.typeOfSentense(TypeOfSentense.exclamation));
-        return  text;
+        String firstWord, secondWord;
+        for (Sentence sentence: text.getSentences()) {
+            if (sentence.getType().equals(Sentence.SentenceType.EXCLAMATION)) {
+                if(sentence.sizeSentense()>1)
+                {
+                    firstWord=sentence.getWords().get(0).toString();
+                    secondWord=sentence.getWords().get(sentence.sizeSentense()-1).toString();
+                    sentence.setWord(0, new Word(secondWord));
+                    sentence.setWord(sentence.sizeSentense()-1, new Word(firstWord));
+
+                }
+            }
+        }
+        return  text.toString();
     }
 }
