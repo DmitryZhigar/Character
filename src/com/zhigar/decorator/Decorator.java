@@ -1,5 +1,6 @@
 package com.zhigar.decorator;
 
+import com.zhigar.gameException.GameException;
 import org.omg.CosNaming.NamingContextExtPackage.StringNameHelper;
 
 import java.io.*;
@@ -20,7 +21,7 @@ public class Decorator extends BufferedReader {
 
 
 
-    public static void writeFromFileToFile(String fileName, String fileName2) throws IOException {
+    public static void writeFromFileToFile(String fileName, String fileName2) throws GameException, IOException {
 
         BufferedWriter fileToWrite = new BufferedWriter(new FileWriter(fileName2));
         try (Decorator dr = new Decorator(new FileReader(fileName))) {
